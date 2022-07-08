@@ -1,26 +1,11 @@
 //File System
-const { rejects } = require('assert');
 const fs = require('fs');
+
+const { rejects } = require('assert');
 const { resolve } = require('path');
-//Readline
-const readline = require('readline');
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-//Membuat folder "data" apabila folder tidak ada
-const dirPath = './data';
-if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath);
-}
-
-//Membuat file "contacts.json" apabila file tidak ada
-const dataPath = './data/contacts.json';
-if (!fs.existsSync(dataPath)) {
-    fs.writeFileSync(dataPath, '[]', 'utf-8');
-}
+//Import semua fungsi dari contact.js
+const {rl, dirPath, dataPath, questions} = require('./contact.js');
 
 // rl.question('What is your name? ', (name) => {
 //     rl.question('Your mobile number? ', (mobile) => {
@@ -33,15 +18,6 @@ if (!fs.existsSync(dataPath)) {
         // rl.close();
 //     });
 // });
-
-//Membuat fungsi ask menggunakan promise
-const questions = (ask) => {
-    return new Promise((resolve, reject) => {
-        rl.question(ask, (inputVariable) => {
-            resolve(inputVariable);
-        });
-    });
-};
 
 const main = async () => {
     const name = await questions('What is your name? ');
@@ -56,4 +32,5 @@ const main = async () => {
     rl.close();
 };
 
+//Menjalankan fungsi main
 main();
