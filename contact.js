@@ -3,6 +3,9 @@ const fs = require('fs');
 //Readline
 const readline = require('readline');
 
+const { rejects } = require('assert');
+const { resolve } = require('path');
+
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -29,4 +32,4 @@ const questions = (ask) => {
     });
 };
 
-module.exports = {rl, dataPath, dirPath, questions};
+module.exports = {rl, questions};

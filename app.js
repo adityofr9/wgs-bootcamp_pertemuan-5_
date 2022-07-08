@@ -1,11 +1,8 @@
 //File System
 const fs = require('fs');
 
-const { rejects } = require('assert');
-const { resolve } = require('path');
-
 //Import semua fungsi dari contact.js
-const {rl, dirPath, dataPath, questions} = require('./contact.js');
+const {rl, questions} = require('./contact.js');
 
 // rl.question('What is your name? ', (name) => {
 //     rl.question('Your mobile number? ', (mobile) => {
