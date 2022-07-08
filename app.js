@@ -8,6 +8,18 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
+//Membuat folder "data" apabila folder tidak ada
+const dirPath = './data';
+if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath);
+}
+
+//Membuat file "contacts.json" apabila file tidak ada
+const dataPath = './data/contacts.json';
+if (!fs.existsSync(dataPath)) {
+    fs.writeFileSync(dataPath, '[]', 'utf-8');
+}
+
 rl.question('What is your name? ', (name) => {
     rl.question('Your mobile number? ', (mobile) => {
         const contact = {name, mobile};
